@@ -12,7 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
+  const switchTheme = () => setIsDark((init) => !init);
+
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
