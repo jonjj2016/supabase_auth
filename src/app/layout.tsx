@@ -5,6 +5,8 @@ import './globals.scss';
 import { useState } from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { lightTheme, darkTheme } from './theme/theme';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,9 +22,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        <CssBaseline>
-          <body className={inter.className}>{children}</body>
-        </CssBaseline>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <CssBaseline>
+            <body className={inter.className}>{children}</body>
+          </CssBaseline>
+        </LocalizationProvider>
       </ThemeProvider>
     </html>
   );
